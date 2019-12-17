@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper  namespace="WeatherMapper">
+<!-- 	weather list -->
+	<select id="list" resultType="com.example.domain.WeatherVO">
+		select * from weather
+		where date = #{date} and  
+		region  like concat('%', #{region}, '%')
+	</select>
+	<insert id="winsert">
+		insert into weather (date, region, wcondition, lowtemp, hightemp, mhumid, ahumid)
+		values(#{date}, #{region}, #{wcondition}, #{lowtemp}, #{hightemp}, #{mhumid}, #{ahumid})
+	</insert>
+</mapper>

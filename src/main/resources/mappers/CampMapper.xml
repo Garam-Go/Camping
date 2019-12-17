@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CampMapper">
+	<select id="list" resultType="com.example.domain.CampVO">
+		select * from camp
+		order by id desc
+		limit #{pageStart},#{perPageNum}
+	</select>
+	
+	<insert id="insert">
+		insert into camp(title,phone,address)
+		values(#{title},#{phone},#{address})
+	</insert>
+	
+	<delete id="delete">
+		delete from camp where id=#{id}
+	</delete>
+	
+	<update id="update">
+		update camp set title=#{title}, address=#{address},	phone=#{phone} where id=#{id}
+	</update>
+	
+	<select id="total" resultType="int">
+		select count(*) from camp
+	</select>
+</mapper>
